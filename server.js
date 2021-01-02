@@ -8,7 +8,9 @@ const routes = require("./routes/myRoutes");
 // Production
 // const URI = "mongodb+srv://Sean:"+process.env.MONGODB_PASS+"@cluster0.xuroh.mongodb.net/Articles?retryWrites=true&w=majority";
 // Development
-const URI = "mongodb://localhost/dev";
+// const URI = "mongodb+srv://Sean:m0ngoPass@cluster0.xuroh.mongodb.net/Articles?retryWrites=true&w=majority";
+// const URI = "mongodb://localhost/dev";
+const URI = "mongodb://127.0.0.1:27017/blog-1";
 mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.once("open", () => console.log("connected to the database"));
