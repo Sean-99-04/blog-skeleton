@@ -1,16 +1,14 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const routes = require("./routes/myRoutes");
 
-// Mongoose
-// Production
-// const URI = "mongodb+srv://Sean:"+process.env.MONGODB_PASS+"@cluster0.xuroh.mongodb.net/Articles?retryWrites=true&w=majority";
-// Development
-// const URI = "mongodb+srv://Sean:m0ngoPass@cluster0.xuroh.mongodb.net/Articles?retryWrites=true&w=majority";
-// const URI = "mongodb://localhost/dev";
-const URI = "mongodb://127.0.0.1:27017/blog-1";
+const { PORT = 5000, MONGODB_USER, MONGODB_PASS, MONGODB_DB } = process.env;
+
+const URI = `mongodb+srv://${MONGODB_USER}:${MONGODB_PASS}@cluster0.xuroh.mongodb.net/${MONGODB_DB}?retryWrites=true&w=majority`;
+
 mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.once("open", () => console.log("connected to the database"));
@@ -30,6 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(
-  process.env.PORT || 5000,
-  console.log("Server listening at http://localhost:5000")
+  // process.env.PORT,
+  PORT,
+  console.log(`Server listening at http://localhost:${PORT}`)
 );
