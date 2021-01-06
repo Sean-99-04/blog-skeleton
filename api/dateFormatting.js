@@ -18,7 +18,7 @@ const monthDay = (day) => {
   if (day.match(/^1\d$/)) {
     day = `${day}th`;
     return day;
-  } else if (day.match(/^\d([4-9]|0)$/)) {
+  } else if (day.match(/(^\d([4-9]|0)$)|[4-9]/)) {
     day = `${day}th`;
     return day;
   } else if (day.match(/(^\d1$)|1/)) {

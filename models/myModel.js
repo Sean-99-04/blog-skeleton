@@ -2,13 +2,17 @@ const mongoose = require("mongoose");
 const formatDate = require("../api/dateFormatting");
 
 const mySchema = new mongoose.Schema({
-  author: {
+  name: {
     type: String,
     required: true,
   },
-  age: {
+  email: {
     type: String,
     required: true,
+  },
+  subDate: {
+    type: Date,
+    default: new Date(),
   },
 });
 

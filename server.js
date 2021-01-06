@@ -21,14 +21,6 @@ app.set("view engine", ".hbs");
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/routes", routes);
+app.use("/", routes);
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
-app.listen(
-  // process.env.PORT,
-  PORT,
-  console.log(`Server listening at http://localhost:${PORT}`)
-);
+app.listen(PORT, console.log(`Server listening at http://localhost:${PORT}`));
